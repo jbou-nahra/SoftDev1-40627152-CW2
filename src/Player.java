@@ -59,7 +59,7 @@ public class Player {
         String output = this.name+ "\n\n";
 
         for(int i = 0; i < this.bets.size(); i++ ){
-            output = output + this.bets.get(i).displayReturn() + "\n";
+            output = output + this.bets.get(i).getResult() + "\n";
         }
 
         if(endReason == 0)
@@ -69,6 +69,9 @@ public class Player {
 
         output = output + "\nFinal Bank Value: " + this.bank;
         JOptionPane.showMessageDialog(null, output, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void play(){
 
     }
 }

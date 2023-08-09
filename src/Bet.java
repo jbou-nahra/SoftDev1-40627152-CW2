@@ -29,9 +29,40 @@ public class Bet {
         this.betAmount = betAmount;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public int getWinnings() {
+        return winnings;
+    }
+
+    public void setWinnings(int winnings) {
+        this.winnings = winnings;
+    }
+
+    public ArrayList<Dice> getDice() {
+        return dice;
+    }
+
+    public void setDice(ArrayList<Dice> dice) {
+        this.dice = dice;
+    }
 
     //Rolls each dice in dice array then passes results for testing for identical and sequential. If both fail player loses.
+    //Player bank is adjusted based on result.
     public void roll(){
         ArrayList<Integer> rolls = new ArrayList<>();
         for(int i = 0; i < this.dice.size();i++){
@@ -66,11 +97,6 @@ public class Bet {
     //used to display the result at end of every round.
     public void display(){
         JOptionPane.showMessageDialog(null, this.result, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
-    }
-
-    //used to pass the result when called.
-    public String displayReturn(){
-        return this.result;
     }
 
     //Arranges the dice roll from smallest to largest then tests to see if they are sequential.
