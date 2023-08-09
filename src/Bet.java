@@ -9,10 +9,9 @@ public class Bet {
     private int winnings;
 
 
-    public Bet(Player player, int betAmount, ArrayList<Dice> dice){
+    public Bet(Player player, ArrayList<Dice> dice){
         this.dice = dice;
         this.player = player;
-        this.betAmount = betAmount;
         this.result = "Bet: \u00a3" +betAmount+ "   ";
     }
 
@@ -87,9 +86,23 @@ public class Bet {
                 if (rolls.get(i) != rolls.get(k)) {
                     return false;
                 }
-
             }
         }
         return true;
+    }
+
+    public int betSize(){
+        do {
+            do {
+                String betAmountString = JOptionPane.showInputDialog(null, "Your current bank balance is: "
+                        +player.getBank()+ "\nPlease enter a bet amount between 1 and 4: ", "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
+                this.betAmount = Integer.parseInt(betAmountString);
+            } while (betAmount < 1 || betAmount > 4);
+            if(player.checkBank(betAmount) == false){
+                JOptionPane.showMessageDialog(null, "Sorry, this bet exceeds your available funds. " +
+                        "Please re-enter bet amount.", "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
+            }
+        }while(player.checkBank(betAmount) == false);
+        return betAmount;
     }
 }

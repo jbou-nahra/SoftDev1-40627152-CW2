@@ -10,46 +10,30 @@ public class Main {
         int betAmount;
 
         ArrayList<Dice> dice = new ArrayList<>(); // Array to hold multiple dice, this can be more than 2
-        ArrayList<Bet> bets = new ArrayList<>(); // Array to hold each bet in game.
+        //ArrayList<Bet> bets = new ArrayList<>(); // Array to hold each bet in game.
 
         Player p1 = new Player();
         diceSet(dice, diceNumber, diceSides);//This initializes the dice array.
 
         //Loops bet 5 times and breaks if player reaches 0 dollars.
         for(int i = 0; i < 5; i++){
-            betAmount = betSize(p1);
-            bets.add(new Bet(p1,betAmount,dice));
-            bets.get(i).roll();
-            bets.get(i).display();
+            p1.addBet(new Bet(p1,dice));
+            ArrayList<Bet> tempBet = p1.getBets();
+            tempBet.get(i).betSize();
+            tempBet.get(i).roll();
+            tempBet.get(i).display();
             if(p1.getBank()<=0){
-                finalOutput(p1,bets,0);
+                finalOutput(p1,p1.getBets(),0);
                 return;
             }
         }
-        finalOutput(p1,bets,1);
+        finalOutput(p1,p1.getBets(),1);
     }
 
     //Initializes the dice array.
-    public static void diceSet(ArrayList<Dice> dice, int diceNumber, int diceSides){
-        for(int i = 0; i < diceNumber; i++)
+    public static void diceSet(ArrayList<Dice> dice, int diceNumber, int diceSides) {
+        for (int i = 0; i < diceNumber; i++)
             dice.add(new Dice(diceSides));
-    }
-
-    //Displays bank value to player and requests a bet amount. Checks to see if it does not exceed player bank.
-    public static int betSize(Player p1){
-        int betAmount = 1;
-        do {
-            do {
-                String betAmountString = JOptionPane.showInputDialog(null, "Your current bank balance is: "
-                        +p1.getBank()+ "\nPlease enter a bet amount between 1 and 4: ", "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
-                betAmount = Integer.parseInt(betAmountString);
-            } while (betAmount < 1 || betAmount > 4);
-            if(p1.checkBank(betAmount) == false){
-                JOptionPane.showMessageDialog(null, "Sorry, this bet exceeds your available funds. " +
-                        "Please re-enter bet amount.", "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
-            }
-        }while(p1.checkBank(betAmount) == false);
-        return betAmount;
     }
 
     //Prepares the final output by calling each result from each bet in the bet array and then prints reason for game

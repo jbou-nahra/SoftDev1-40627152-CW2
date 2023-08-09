@@ -1,8 +1,10 @@
 import javax.swing.*;
+import java.util.ArrayList;
 
 public class Player {
     private String name;
     private int bank;
+    private ArrayList<Bet> bets = new ArrayList<>();
 
     public Player(){
         String name = JOptionPane.showInputDialog(null,"Please enter your name: ","Dice Poker",JOptionPane.INFORMATION_MESSAGE);
@@ -30,6 +32,14 @@ public class Player {
 
     public void setBank(int bank) {
         this.bank = bank;
+    }
+
+    public void addBet(Bet bets) {
+        this.bets.add(bets);
+    }
+
+    public ArrayList<Bet> getBets() {
+        return bets;
     }
 
     //Checks to see if the player bet does not exceed his bank.
