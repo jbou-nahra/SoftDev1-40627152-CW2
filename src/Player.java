@@ -71,7 +71,12 @@ public class Player {
         JOptionPane.showMessageDialog(null, output, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    //This is player roll. It creates a bet and adds it to array, then it calls the three function from Bet class
+    //to get the bet size and check available funds it does the actual roll and displays the result.
     public void play(){
-
+        this.bets.add(new Bet(this));
+        this.bets.get(bets.size() -1).betSize();
+        this.bets.get(bets.size() -1).roll();
+        this.bets.get(bets.size() -1).display();
     }
 }

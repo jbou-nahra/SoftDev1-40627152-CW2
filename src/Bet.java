@@ -15,7 +15,7 @@ public class Bet {
 
         this.dice = new ArrayList<>();
         this.player = player;
-        this.result = "Bet: \u00a3" +betAmount+ "   ";
+        //this.result = "Bet: \u00a3" +betAmount+ "   ";
 
         for (int i = 0; i < diceNumber; i++)
             this.dice.add(new Dice(diceSides));
@@ -145,6 +145,7 @@ public class Bet {
                         "Please re-enter bet amount.", "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
             }
         }while(player.checkBank(betAmount) == false);
+        this.result = "Bet: \u00a3" +betAmount+ "   ";
         return betAmount;
     }
 }
