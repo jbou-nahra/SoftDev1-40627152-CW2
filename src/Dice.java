@@ -13,6 +13,7 @@ public class Dice {
         this.sides = sides;
     }
 
+    //This is the basic roll for a single dice. It randomizes the result based on the number of sides of the dice.
     public int roll(){
         int min = 1;
         int max = this.sides;
