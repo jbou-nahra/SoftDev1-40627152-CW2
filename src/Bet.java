@@ -4,16 +4,32 @@ import java.util.ArrayList;
 public class Bet {
     private int betAmount;
     private Player player;
-    private ArrayList<Dice> dice = new ArrayList<>();
+    private ArrayList<Dice> dice;
     private String result;
     private int winnings;
 
 
-    public Bet(Player player, ArrayList<Dice> dice){
-        this.dice = dice;
+    public Bet(Player player){
+        int diceNumber = 2;
+        int diceSides = 6;
+
+        this.dice = new ArrayList<>();
         this.player = player;
         this.result = "Bet: \u00a3" +betAmount+ "   ";
+
+        for (int i = 0; i < diceNumber; i++)
+            this.dice.add(new Dice(diceSides));
     }
+
+    public int getBetAmount() {
+        return betAmount;
+    }
+
+    public void setBetAmount(int betAmount) {
+        this.betAmount = betAmount;
+    }
+
+
 
     //Rolls each dice in dice array then passes results for testing for identical and sequential. If both fail player loses.
     public void roll(){

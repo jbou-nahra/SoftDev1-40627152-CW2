@@ -4,12 +4,13 @@ import java.util.ArrayList;
 public class Player {
     private String name;
     private int bank;
-    private ArrayList<Bet> bets = new ArrayList<>();
+    private ArrayList<Bet> bets;
 
     public Player(){
         String name = JOptionPane.showInputDialog(null,"Please enter your name: ","Dice Poker",JOptionPane.INFORMATION_MESSAGE);
         this.name = name;
         this.bank = 6;
+        this.bets = new ArrayList<>();
 
         //These following lines are code that would allow user to enter a different starting bank pool. Remove the above line
         //and place the following three.
@@ -42,11 +43,32 @@ public class Player {
         return bets;
     }
 
+
+
     //Checks to see if the player bet does not exceed his bank.
     public boolean checkBank(int betAmount){
         if(betAmount > this.bank)
             return false;
         else
             return true;
+    }
+
+    //Prepares the final output by calling each result from each bet in the bet array and then prints reason for game
+    //end and final bank value.
+    public void finalOutput(int endReason){
+        String output = this.name+ "\n\n";
+
+        for(int i = 0; i < this.bets.size(); i++ ){
+            output = output + this.bets.get(i).displayReturn() + "\n";
+        }
+
+        if(endReason == 0)
+            output = output + "\nRan out of funds.\n";
+        else
+            output = output + "\nNo more tries.\n";
+
+        output = output + "\nFinal Bank Value: " + this.bank;
+        JOptionPane.showMessageDialog(null, output, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
+
     }
 }
