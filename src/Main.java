@@ -15,6 +15,5 @@ public class Main {
         }
         p1.finalOutput(1);
         s1.scoreArrange(p1);
-
     }
 }

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -7,7 +8,12 @@ import java.util.Collections;
 
 public class ScoreBoard {
     ArrayList<Player> players;
+    String scores;
 
+    public ScoreBoard(){
+        //this.writeFile();
+        this.readFile();
+    }
     public ArrayList<Player> getPlayers() {
         return players;
     }
@@ -16,9 +22,12 @@ public class ScoreBoard {
         this.players = players;
     }
 
-    public ScoreBoard(){
-        //this.writeFile();
-        this.readFile();
+    public String getScores() {
+        return scores;
+    }
+
+    public void setScores(String scores) {
+        this.scores = scores;
     }
 
     public void readFile(){
@@ -32,11 +41,11 @@ public class ScoreBoard {
             int tempBank;
 
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 splited = line.split("\\s+");
 
-                tempBank = Integer.parseInt(splited[1]);
-                this.players.add(new Player(splited[0],tempBank));
+                tempBank = Integer.parseInt(splited[0]);
+                this.players.add(new Player(tempBank, splited[1]));
             }
             reader.close();
 
@@ -49,9 +58,10 @@ public class ScoreBoard {
         this.players.add(p1);
         Collections.sort(this.players, Collections.reverseOrder());
         for(int i = 0; i < this.players.size(); i++ ){
-            System.out.println(this.players.get(i).getBank());
+            //System.out.println(this.players.get(i).getBank());
         }
         this.writeFile();
+        this.scoreDisplay();
     }
 
     public void writeFile(){
@@ -61,12 +71,17 @@ public class ScoreBoard {
                 writer.write(this.players.get(i).getBank() +" "+ this.players.get(i).getName() + "\n");
             }
             writer.close();
-           /*writer.write("Hello World");
-            writer.write("\r\n");   // write new line
-            writer.write("Good Bye!");
-            writer.close();*/
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void scoreDisplay(){
+        this.scores = "";
+        for(int i = 0; i < 10; i++){
+            this.scores = this.scores + this.players.get(i).getBank() +" "+ this.players.get(i).getName() + "\n";
+        }
+        JOptionPane.showMessageDialog(null, this.scores, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
     }
 }

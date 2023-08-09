@@ -19,7 +19,7 @@ public class Player implements Comparable<Player>{
         //this.bank = bank;
     }
 
-    public Player(String name, int bank){
+    public Player(int bank, String name){
         this.name = name;
         this.bank = bank;
     }
@@ -73,6 +73,7 @@ public class Player implements Comparable<Player>{
             output = output + "\nNo more tries.\n";
 
         output = output + "\nFinal Bank Value: " + this.bank;
+
         JOptionPane.showMessageDialog(null, output, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
     }
 

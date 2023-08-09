@@ -1,3 +1,6 @@
+30 John
+30 John
+20 John
 18 John
 9 Tim
 4 Kris
@@ -5,6 +8,3 @@
 2 Fiz
 1 Sam
 0 Zen
-0 Willy
-0 Phil
-0 Noble
