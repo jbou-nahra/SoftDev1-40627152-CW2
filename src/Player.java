@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Player {
+public class Player implements Comparable<Player>{
     private String name;
     private int bank;
     private ArrayList<Bet> bets;
@@ -17,6 +17,11 @@ public class Player {
         //String bank = JOptionPane.showInputDialog("Please enter the amount you would like to play with: ");
         //bank = Integer.parseInt(EvenOddChoice);
         //this.bank = bank;
+    }
+
+    public Player(String name, int bank){
+        this.name = name;
+        this.bank = bank;
     }
 
     public String getName() {
@@ -78,5 +83,13 @@ public class Player {
         this.bets.get(bets.size() -1).betSize();
         this.bets.get(bets.size() -1).roll();
         this.bets.get(bets.size() -1).display();
+    }
+
+    @Override
+    public int compareTo(Player o) {
+        if(this.bank != o.getBank()){
+            return this.bank - o.getBank();
+        }
+        return this.name.compareTo(o.getName());
     }
 }
