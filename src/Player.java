@@ -85,6 +85,7 @@ public class Player implements Comparable<Player>{
 
         ScoreBoard s1 = new ScoreBoard();
         s1.scoreArrange(this);
+        s1.scoreDisplay();
     }
 
     //This is player roll. It creates a bet and adds it to array, then it calls the three function from Bet class

@@ -61,7 +61,6 @@ public class ScoreBoard {
             //System.out.println(this.players.get(i).getBank());
         }
         this.writeFile();
-        this.scoreDisplay();
     }
 
     public void writeFile(){
