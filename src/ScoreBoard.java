@@ -78,9 +78,10 @@ public class ScoreBoard {
     }
 
     public void scoreDisplay(){
-        this.scores = "";
+        this.scores = "TOP 10 HIGHEST SCORES\n";
         for(int i = 0; i < 10; i++){
-            this.scores = this.scores + this.players.get(i).getBank() +" "+ this.players.get(i).getName() + "\n";
+            String bankTemp = String.format("%03d", this.players.get(i).getBank());
+            this.scores = this.scores + bankTemp +"    "+ this.players.get(i).getName() + "\n";
         }
         JOptionPane.showMessageDialog(null, this.scores, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
     }
