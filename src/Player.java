@@ -5,6 +5,7 @@ public class Player implements Comparable<Player>{
     private String name;
     private int bank;
     private ArrayList<Bet> bets;
+    private ScoreBoard s1;
 
     public Player(){
         String name = JOptionPane.showInputDialog(null,"Please enter your name: ","Dice Poker",JOptionPane.INFORMATION_MESSAGE);
@@ -48,7 +49,13 @@ public class Player implements Comparable<Player>{
         return bets;
     }
 
+    public ScoreBoard getS1() {
+        return s1;
+    }
 
+    public void setS1(ScoreBoard s1) {
+        this.s1 = s1;
+    }
 
     //Checks to see if the player bet does not exceed his bank.
     public boolean checkBank(int betAmount){
@@ -75,6 +82,9 @@ public class Player implements Comparable<Player>{
         output = output + "\nFinal Bank Value: " + this.bank;
 
         JOptionPane.showMessageDialog(null, output, "Dice Poker", JOptionPane.INFORMATION_MESSAGE);
+
+        ScoreBoard s1 = new ScoreBoard();
+        s1.scoreArrange(this);
     }
 
     //This is player roll. It creates a bet and adds it to array, then it calls the three function from Bet class
