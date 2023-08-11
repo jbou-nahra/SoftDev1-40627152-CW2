@@ -10,13 +10,11 @@ public class Bet {
 
 
     public Bet(Player player){
-        int diceNumber = 2;
-        int diceSides = 6;
-
-        this.dice = new ArrayList<>();
         this.player = player;
-        //this.result = "Bet: \u00a3" +betAmount+ "   ";
+    }
 
+    public void setDice(int diceNumber, int diceSides){
+        this.dice = new ArrayList<>();
         for (int i = 0; i < diceNumber; i++)
             this.dice.add(new Dice(diceSides));
     }

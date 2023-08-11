@@ -10,7 +10,6 @@ public class Player implements Comparable<Player>{
     public Player(){
         String name = JOptionPane.showInputDialog(null,"Please enter your name: ","Dice Poker",JOptionPane.INFORMATION_MESSAGE);
         this.name = name;
-        this.bank = 6;
         this.bets = new ArrayList<>();
 
         //These following lines are code that would allow user to enter a different starting bank pool. Remove the above line
@@ -90,8 +89,9 @@ public class Player implements Comparable<Player>{
 
     //This is player roll. It creates a bet and adds it to array, then it calls the three function from Bet class
     //to get the bet size and check available funds it does the actual roll and displays the result.
-    public void play(){
+    public void play(int diceNumber, int diceSides){
         this.bets.add(new Bet(this));
+        this.bets.get(bets.size() -1).setDice(diceNumber,diceSides);
         this.bets.get(bets.size() -1).betSize();
         this.bets.get(bets.size() -1).roll();
         this.bets.get(bets.size() -1).display();
